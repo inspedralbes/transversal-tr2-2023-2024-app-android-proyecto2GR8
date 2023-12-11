@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">DAMTR2G8</string>
+    <string name="tvEmail">El teu email: </string>
+    <string name="tvHintEmail">email@exemple.com</string>
+    <string name="tvPassword">La teva contrasenya: </string>
+    <string name="tvHintPassword">Contrasenya</string>
+    <string name="btnLogin">Iniciar sessió</string>
+    <string name="tvLogin">Login</string>
+    <string name="tvNoUsuario">No tens usuari?</string>
+    <string name="btnIrRegistro">REGISTRAR-SE</string>
+    <string name="tvRegisterActivity">REGISTRE</string>
+    <string name="btnIrLogin">INICIAR SESSIÓ</string>
+    <string name="tvSiUsuario">Ja tens un usuari?</string>
+</resources>
