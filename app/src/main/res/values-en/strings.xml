@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">DAMTR2G8</string>
+    <string name="tvBienvenida">WELCOME TO MATH BATTLE</string>
     <string name="tvEmail">Your email: </string>
     <string name="tvHintEmail">email@example.com</string>
     <string name="tvPassword">Your password: </string>
