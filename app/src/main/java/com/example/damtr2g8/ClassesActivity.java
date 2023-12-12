@@ -39,6 +39,10 @@ public class ClassesActivity extends AppCompatActivity {
             onBackPressed();
         });
 
+        binding.btnCrearClasse.setOnClickListener(v -> {
+            //aqui irá la funcionalidad para crear una clase
+        });
+
     }
 @Override
 public boolean onOptionsItemSelected(MenuItem item) {
