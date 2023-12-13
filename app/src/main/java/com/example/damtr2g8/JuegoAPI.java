@@ -8,4 +8,6 @@ import retrofit2.http.POST;
 public interface JuegoAPI {
     @POST("/login")
     Call<RespuestaUsuario> login(@Body UsuarioLogin usuario);
+    @POST("/register")
+    Call<RespuestaUsuario> register(@Body UsuarioRegistro usuario);
 }
