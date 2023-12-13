@@ -47,6 +47,7 @@
                 android:textSize="25sp"
                 android:textColor="@color/black"/>
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEmail"
                 android:layout_width="250dp"
                 android:layout_height="50dp"
                 android:hint="@string/tvHintEmail"
@@ -69,8 +70,10 @@
                 android:textSize="25sp"
                 android:textColor="@color/black"/>
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPassword"
                 android:layout_width="250dp"
                 android:layout_height="50dp"
+                android:inputType="textPassword"
                 android:hint="@string/tvHintPassword"
                 android:textColorHint="@color/black"
                 android:textColor="@color/black"/>
