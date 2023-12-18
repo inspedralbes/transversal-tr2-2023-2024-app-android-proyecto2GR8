@@ -10,9 +10,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginVertical="80dp"
+        android:layout_marginVertical="60dp"
         android:layout_marginHorizontal="50dp"
-        android:background="#72BAE8"
+        android:background="@drawable/background_rounded_button"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="100dp"
         tools:layout_editor_absoluteY="100dp">

@@ -57,11 +57,9 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void login(){
-        Log.i("login", "entro al login");
         String email = etEmail.getText().toString();
         String pass = etPass.getText().toString();
         UsuarioLogin user = new UsuarioLogin(email, pass);
-        Log.i("verUsuario1", user.toString());
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(URL)
@@ -75,10 +73,9 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call<RespuestaUsuario> call, Response<RespuestaUsuario> response) {
-                Log.i("HTTP Status Code", String.valueOf(response.code()));
+
                 if(response.isSuccessful()){
                     RespuestaUsuario respuestaUsuario = response.body();
-                    Log.i("verUsuarioCorrecto", respuestaUsuario.toString());
                     String nom = respuestaUsuario.userData.getNom();
                     String cognom = respuestaUsuario.userData.getCognom();
                     String correu = respuestaUsuario.userData.getCorreu();
@@ -112,7 +109,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<RespuestaUsuario> call, Throwable t) {
                 Toast.makeText(LoginActivity.this, "Error al hacer login", Toast.LENGTH_SHORT).show();
-
             }
         });
     }
