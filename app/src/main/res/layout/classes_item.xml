@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15px"
+    android:layout_gravity="center"
+    >
+
+    <LinearLayout
+        android:layout_width="300px"
+        android:layout_height="300px"
+        android:orientation="vertical"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:background="@drawable/background_rounded">
+
+        <TextView
+            android:id="@+id/tvNombreClasse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10px"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:text="nombre de la classe"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnUnirse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Uneix-te"
+            android:background="@drawable/background_rounded_button"/>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

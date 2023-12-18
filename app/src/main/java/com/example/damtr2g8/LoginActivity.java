@@ -43,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         btnIrRegistro.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
             startActivity(intent);
+
         });
 
         btnLogin.setOnClickListener(v -> {
@@ -110,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<RespuestaUsuario> call, Throwable t) {
-                Log.i("verUsuarioError", "error "+t.getMessage()+" "+call.toString());
+                Toast.makeText(LoginActivity.this, "Error al hacer login", Toast.LENGTH_SHORT).show();
 
             }
         });
