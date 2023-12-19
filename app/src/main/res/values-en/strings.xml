@@ -13,7 +13,24 @@
     <string name="tvRegisterActivity">REGISTER</string>
     <string name="btnIrLogin">LOGIN</string>
     <string name="tvSiUsuario">You already have a user?</string>
-    <string name="btnCrearClasse">Botó per crear una classe</string>
+    <string name="btnCrearClasse">Create Class button</string>
+    <string name="tvNom">Your name:</string>
+    <string name="tvHintNom">Name</string>
+    <string name="tvCognom">Your surname</string>
+    <string name="tvHintCognom">Surname</string>
+    <string name="tvCodiSala">ROOM CODE</string>
+    <string name="tvStatus">STATUS</string>
+    <string name="tvCodi">CODE</string>
+    <string name="btnComençar">START</string>
+    <string name="tvCrearClasse">CREATE CLASS</string>
+    <string name="tvNomClasse">Class name</string>
+    <string name="btnCrear">CREAR</string>
+    <string name="btnCancelar">CANCELAR</string>
+    <string name="btnUnirse">JOIN</string>
+    <string name="ToastClasse">You must write a class name</string>
+
+
+
 
 
     <string name="title_activity_classes">ClassesActivity</string>

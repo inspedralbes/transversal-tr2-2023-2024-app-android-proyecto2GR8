@@ -72,7 +72,6 @@ public class ClassesActivity extends AppCompatActivity {
 
         binding.btnCrearClasse.setOnClickListener(v -> {
             showConfirmDialog();
-            Toast.makeText(this, "asdasd", Toast.LENGTH_SHORT).show();
         });
 
         DataBaseHelper dbHelper = new DataBaseHelper(ClassesActivity.this);
@@ -120,9 +119,6 @@ public boolean onOptionsItemSelected(MenuItem item) {
             Intent intent = new Intent(ClassesActivity.this, StatsActivity.class);
             startActivity(intent);
             return true;
-        case R.id.VeureClasses:
-            Toast.makeText(this, "Estas en la pantalla de clases", Toast.LENGTH_SHORT).show();
-
         default:
             return super.onOptionsItemSelected(item);
     }
@@ -149,18 +145,15 @@ public boolean onOptionsItemSelected(MenuItem item) {
             public void onResponse(Call<List<Classes.Classe>> call, Response<List<Classes.Classe>> response) {
                 if(response.isSuccessful()){
                     classes = response.body();
-                    Log.i("verClasses", classes.toString());
                     for(int i = 0; i < classes.size(); i++){
                         Log.i("verClasses", classes.get(i).getNomClasse());
                     }
                     recyclerView = findViewById(R.id.rvClasses);
-                    recyclerView.setLayoutManager(new GridLayoutManager(ClassesActivity.this,3));
+                    recyclerView.setLayoutManager(new GridLayoutManager(ClassesActivity.this,2));
 
 
                     classesAdapter = new ClassesAdapter(classes, idProfe);
                     recyclerView.setAdapter(classesAdapter);
-
-                    Toast.makeText(ClassesActivity.this, "Clases obtenidas correctamente", Toast.LENGTH_SHORT).show();
 
                 }else{
                     Toast.makeText(ClassesActivity.this, "Error al obtener las clases", Toast.LENGTH_SHORT).show();
@@ -187,40 +180,43 @@ public boolean onOptionsItemSelected(MenuItem item) {
         btnConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 TextView tvNomClasse = dialogView.findViewById(R.id.etNomClasse);
                 String nomClasse = tvNomClasse.getText().toString();
+                if(!nomClasse.isEmpty()){
+                    CrearClasse classe = new CrearClasse(nomClasse, idProfe);
 
+                    Log.i("crearClasse", classe.getNomClasse()+" "+classe.getIdPropietari());
 
-                CrearClasse classe = new CrearClasse(nomClasse, idProfe);
+                    retrofit = new Retrofit.Builder()
+                            .baseUrl(URL)
+                            .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().setLenient().create()))
+                            .build();
 
-                Log.i("crearClasse", classe.getNomClasse()+" "+classe.getIdPropietari());
+                    juegoAPI = retrofit.create(JuegoAPI.class);
 
-                retrofit = new Retrofit.Builder()
-                        .baseUrl(URL)
-                        .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().setLenient().create()))
-                        .build();
+                    Call<Void> call = juegoAPI.crearClasse(classe);
 
-                juegoAPI = retrofit.create(JuegoAPI.class);
+                    call.enqueue(new Callback<Void>() {
+                        @Override
+                        public void onResponse(Call<Void> call, Response<Void> response) {
+                            if(response.isSuccessful()){
+                                getClasses(idProfe);
+                                Toast.makeText(ClassesActivity.this, "Clase creada correctamente", Toast.LENGTH_SHORT).show();
 
-                Call<Void> call = juegoAPI.crearClasse(classe);
-
-                call.enqueue(new Callback<Void>() {
-                    @Override
-                    public void onResponse(Call<Void> call, Response<Void> response) {
-                        if(response.isSuccessful()){
-                            getClasses(idProfe);
-                            Toast.makeText(ClassesActivity.this, "Clase creada correctamente", Toast.LENGTH_SHORT).show();
-
-                        }else{
-                            Toast.makeText(ClassesActivity.this, "Error al crear la clase", Toast.LENGTH_SHORT).show();
+                            }else{
+                                Toast.makeText(ClassesActivity.this, "Error al crear la clase", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onFailure(Call<Void> call, Throwable t) {
-                        Toast.makeText(ClassesActivity.this, "Error on Failure", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<Void> call, Throwable t) {
+                            Toast.makeText(ClassesActivity.this, "Error on Failure", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }else{
+                    Toast.makeText(ClassesActivity.this, getString(R.string.ToastClasse), Toast.LENGTH_SHORT).show();
+                }
 
                 dialog.dismiss();
             }

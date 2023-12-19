@@ -13,6 +13,20 @@
     <string name="btnIrLogin">INICIAR SESSIÓ</string>
     <string name="tvSiUsuario">Ja tens un usuari?</string>
     <string name="btnCrearClasse">Botó per crear una classe</string>
+    <string name="tvNom">El teu nom:</string>
+    <string name="tvHintNom">Nom</string>
+    <string name="tvCognom">El teu cognom:</string>
+    <string name="tvHintCognom">Cognom</string>
+    <string name="tvCodiSala">CODI DE LA SALA</string>
+    <string name="tvStatus">ESTAT</string>
+    <string name="tvCodi">CODI</string>
+    <string name="btnComençar">COMENÇAR</string>
+    <string name="tvCrearClasse">CREAR CLASSE</string>
+    <string name="tvNomClasse">Nom de la classe</string>
+    <string name="btnCrear">CREAR</string>
+    <string name="btnCancelar">CANCELAR</string>
+    <string name="btnUnirse">UNEIX-TE</string>
+    <string name="ToastClasse">Has de posar un nom a la classe</string>
 
 
     <string name="title_activity_classes">ClassesActivity</string>

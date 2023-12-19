@@ -87,14 +87,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="El teu nom:"
+                android:text="@string/tvNom"
                 android:textSize="25sp"
                 android:textColor="@color/black"/>
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etNom"
                 android:layout_width="250dp"
                 android:layout_height="50dp"
-                android:hint="@string/tvHintPassword"
+                android:hint="@string/tvHintNom"
                 android:textColorHint="@color/black"
                 android:textColor="@color/black"/>
         </LinearLayout>
@@ -107,14 +107,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="El teu cognom:"
+                android:text="@string/tvCognom"
                 android:textSize="25sp"
                 android:textColor="@color/black"/>
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etCognom"
                 android:layout_width="250dp"
                 android:layout_height="50dp"
-                android:hint="@string/tvHintPassword"
+                android:hint="@string/tvHintCognom"
                 android:textColorHint="@color/black"
                 android:textColor="@color/black"/>
         </LinearLayout>

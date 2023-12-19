@@ -48,7 +48,12 @@ public class LoginActivity extends AppCompatActivity {
 
         btnLogin.setOnClickListener(v -> {
             //loginPrueba(v);
-            login();
+            if(etEmail.getText().toString().isEmpty() || etPass.getText().toString().isEmpty()){
+                Toast.makeText(LoginActivity.this, "Rellena todos los campos", Toast.LENGTH_SHORT).show();
+                return;
+            }else{
+                login();
+            }
         });
     }
 
@@ -73,36 +78,42 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call<RespuestaUsuario> call, Response<RespuestaUsuario> response) {
-
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     RespuestaUsuario respuestaUsuario = response.body();
-                    String nom = respuestaUsuario.userData.getNom();
-                    String cognom = respuestaUsuario.userData.getCognom();
-                    String correu = respuestaUsuario.userData.getCorreu();
-                    String pass = respuestaUsuario.userData.getPass();
-                    int idUsu = respuestaUsuario.userData.getIdUsu();
+                    if (respuestaUsuario != null) {
+                        if (respuestaUsuario.userData != null) {
+                            String nom = respuestaUsuario.userData.getNom();
+                            String cognom = respuestaUsuario.userData.getCognom();
+                            String correu = respuestaUsuario.userData.getCorreu();
+                            String pass = respuestaUsuario.userData.getPass();
+                            int idUsu = respuestaUsuario.userData.getIdUsu();
 
-                    DataBaseHelper dbHelper = new DataBaseHelper(LoginActivity.this);
-                    SQLiteDatabase db = dbHelper.getWritableDatabase();
+                            DataBaseHelper dbHelper = new DataBaseHelper(LoginActivity.this);
+                            SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-                    ContentValues values = new ContentValues();
-                    values.put(DataBaseHelper.COLUMN_NOM, nom);
-                    values.put(DataBaseHelper.COLUMN_COGNOM, cognom);
-                    values.put(DataBaseHelper.COLUMN_CORREU, correu);
-                    values.put(DataBaseHelper.COLUMN_PASS, pass);
-                    values.put(DataBaseHelper.COLUMN_ID, idUsu);
+                            ContentValues values = new ContentValues();
+                            values.put(DataBaseHelper.COLUMN_NOM, nom);
+                            values.put(DataBaseHelper.COLUMN_COGNOM, cognom);
+                            values.put(DataBaseHelper.COLUMN_CORREU, correu);
+                            values.put(DataBaseHelper.COLUMN_PASS, pass);
+                            values.put(DataBaseHelper.COLUMN_ID, idUsu);
 
-                    //ESTO HACE EL INSERT
-                    long newRowId = db.insert(DataBaseHelper.TABLE_NAME, null, values);
+                            //ESTO HACE EL INSERT
+                            long newRowId = db.insert(DataBaseHelper.TABLE_NAME, null, values);
 
-                    //Y CERRAR CONEXION
-                    db.close();
+                            //Y CERRAR CONEXION
+                            db.close();
 
-                    Intent intent = new Intent(LoginActivity.this, ClassesActivity.class);
-                    startActivity(intent);
-
-                }else{
-                    Toast.makeText(LoginActivity.this, "El correo o la contraseña no son correctos", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(LoginActivity.this, ClassesActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+                            etEmail.setText("");
+                            etPass.setText("");
+                        }
+                    } else {
+                        Toast.makeText(LoginActivity.this, "Error al hacer login", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
 

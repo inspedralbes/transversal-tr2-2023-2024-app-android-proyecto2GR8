@@ -35,7 +35,6 @@ public class SalaActivity extends AppCompatActivity {
 
         int idClasse = getIntent().getIntExtra("idClasse", -1);
         int idProfe = getIntent().getIntExtra("idProfe", -1);
-        Toast.makeText(this, "idClasse: " + idClasse + " idProfe: " + idProfe, Toast.LENGTH_SHORT).show();
 
         recibirSala(idClasse, idProfe);
     }
@@ -52,7 +51,12 @@ public class SalaActivity extends AppCompatActivity {
                     public void run() {
                         sala = receivedSala;
                         tvCodiClasse.setText(sala.getCodi());
-                        tvStatus.setText(sala.getStatus());
+                        if(sala.getStatus().equals("waiting")){
+                            tvStatus.setText("esperant jugadors");
+                        }else{
+                            tvStatus.setText("Iniciada");
+                            btnIniciar.setVisibility(Button.GONE);
+                        }
                         Log.i("ReciboSala", "Sala actualizada - ID: " + sala.getIdSala());
 
                         // Ahora puedes acceder a los jugadores de la sala actualizada
@@ -61,7 +65,7 @@ public class SalaActivity extends AppCompatActivity {
                         }
 
                         recyclerView = findViewById(R.id.rvJugadors);
-                        recyclerView.setLayoutManager(new GridLayoutManager(SalaActivity.this,3));
+                        recyclerView.setLayoutManager(new GridLayoutManager(SalaActivity.this,5));
 
                         // Configurar el adaptador con la lista de jugadores
                         jugadorsAdapter = new JugadoresAdapter(sala.getJugadores());

@@ -34,8 +34,8 @@
             android:layout_height="match_parent"
             android:scrollbars="vertical"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            android:paddingTop="200px"
-            android:paddingHorizontal="50px"/>
+            android:paddingTop="100dp"
+            android:paddingHorizontal="20dp"/>
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

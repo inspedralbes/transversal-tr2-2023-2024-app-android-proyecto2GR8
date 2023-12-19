@@ -46,8 +46,6 @@ public class StatsActivity extends AppCompatActivity {
                 Intent intent = new Intent(StatsActivity.this, ClassesActivity.class);
                 startActivity(intent);
                 return true;
-            case R.id.ver_estadisticas:
-                Toast.makeText(this, "Estas en la pantalla de estadísticas", Toast.LENGTH_SHORT).show();
 
             default:
                 return super.onOptionsItemSelected(item);
@@ -56,7 +54,7 @@ public class StatsActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
+        getMenuInflater().inflate(R.menu.menustats, menu);
         return true;
     }
 }
