@@ -54,36 +54,42 @@ public class RegisterActivity extends AppCompatActivity {
         String nom = etNom.getText().toString();
         String cognom = etCognom.getText().toString();
 
-        retrofit = new Retrofit.Builder()
-                .baseUrl(URL)
-                .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().create()))
-                .build();
+        if(!email.isEmpty() && !pass.isEmpty() && !nom.isEmpty() && !cognom.isEmpty()){
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(URL)
+                    .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().create()))
+                    .build();
 
-        juegoAPI = retrofit.create(JuegoAPI.class);
+            juegoAPI = retrofit.create(JuegoAPI.class);
 
-        UsuarioRegistro user = new UsuarioRegistro(email, pass, nom, cognom);
+            UsuarioRegistro user = new UsuarioRegistro(email, pass, nom, cognom);
 
-        Call<RespuestaUsuario> call = juegoAPI.register(user);
+            Call<RespuestaUsuario> call = juegoAPI.register(user);
 
-        call.enqueue(new Callback<RespuestaUsuario>() {
-            @Override
-            public void onResponse(Call<RespuestaUsuario> call, Response<RespuestaUsuario> response) {
-                if(response.isSuccessful()){
-                    RespuestaUsuario respuesta = response.body();
-                    Toast.makeText(RegisterActivity.this, "Usuario registrado!", Toast.LENGTH_SHORT).show();
+            call.enqueue(new Callback<RespuestaUsuario>() {
+                @Override
+                public void onResponse(Call<RespuestaUsuario> call, Response<RespuestaUsuario> response) {
+                    if(response.isSuccessful()){
+                        RespuestaUsuario respuesta = response.body();
+                        Toast.makeText(RegisterActivity.this, "Usuario registrado!", Toast.LENGTH_SHORT).show();
 
-                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                }else{
-                    Toast.makeText(RegisterActivity.this, "Error al registrar usuario", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                    }else{
+                        Toast.makeText(RegisterActivity.this, "Error al registrar usuario", Toast.LENGTH_SHORT).show();
 
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<RespuestaUsuario> call, Throwable t) {
-                Toast.makeText(RegisterActivity.this, "Error al registrar usuario onFailure", Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onFailure(Call<RespuestaUsuario> call, Throwable t) {
+                    Toast.makeText(RegisterActivity.this, "Error al registrar usuario onFailure", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }else{
+            Toast.makeText(RegisterActivity.this, getString(R.string.ToastCampos), Toast.LENGTH_SHORT).show();
+        }
+
+
     }
 }

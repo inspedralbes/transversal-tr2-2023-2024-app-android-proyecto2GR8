@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="dificultades">
+        <item>Per defecte</item>
+    </string-array>
+    <string-array name="operadores">
+        <item>+</item>
+        <item>-</item>
+        <item>*</item>
+        <item>/</item>
+        <item>^</item>
+        <item>√</item>
+    </string-array>
+    <string-array name="niveles">
+        <item>Facil</item>
+        <item>Mitjà</item>
+        <item>Dificil</item>
+
+    </string-array>
+</resources>

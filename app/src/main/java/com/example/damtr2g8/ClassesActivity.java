@@ -74,6 +74,11 @@ public class ClassesActivity extends AppCompatActivity {
             showConfirmDialog();
         });
 
+        binding.btnCrearDificultad.setOnClickListener(v -> {
+            Intent intent = new Intent(ClassesActivity.this, CrearDificultadActivity.class);
+            startActivity(intent);
+        });
+
         DataBaseHelper dbHelper = new DataBaseHelper(ClassesActivity.this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
@@ -149,7 +154,7 @@ public boolean onOptionsItemSelected(MenuItem item) {
                         Log.i("verClasses", classes.get(i).getNomClasse());
                     }
                     recyclerView = findViewById(R.id.rvClasses);
-                    recyclerView.setLayoutManager(new GridLayoutManager(ClassesActivity.this,2));
+                    recyclerView.setLayoutManager(new GridLayoutManager(ClassesActivity.this,1));
 
 
                     classesAdapter = new ClassesAdapter(classes, idProfe);

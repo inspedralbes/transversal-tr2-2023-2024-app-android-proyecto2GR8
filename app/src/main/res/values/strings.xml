@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DAMTR2G8</string>
+    <string name="app_name">Math Battle</string>
     <string name="tvBienvenida">BENVINGUT A MATH BATTLE</string>
     <string name="tvEmail">El teu email: </string>
     <string name="tvHintEmail">email@exemple.com</string>
@@ -27,6 +27,8 @@
     <string name="btnCancelar">CANCELAR</string>
     <string name="btnUnirse">UNEIX-TE</string>
     <string name="ToastClasse">Has de posar un nom a la classe</string>
+    <string name="ToastCampos">Has de omplir tots els camps</string>
+    <string name="tvDificultad">Selecciona la dificultat</string>
 
 
     <string name="title_activity_classes">ClassesActivity</string>

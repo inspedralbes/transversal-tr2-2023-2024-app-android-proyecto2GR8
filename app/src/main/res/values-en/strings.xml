@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">DAMTR2G8</string>
+    <string name="app_name">Math Battle</string>
     <string name="tvBienvenida">WELCOME TO MATH BATTLE</string>
     <string name="tvEmail">Your email: </string>
     <string name="tvHintEmail">email@example.com</string>
@@ -28,6 +28,8 @@
     <string name="btnCancelar">CANCELAR</string>
     <string name="btnUnirse">JOIN</string>
     <string name="ToastClasse">You must write a class name</string>
+    <string name="ToastCampos">You must introduce all your data</string>
+    <string name="tvDificultad">Select the difficulty</string>
 
 
 

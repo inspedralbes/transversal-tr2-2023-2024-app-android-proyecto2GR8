@@ -6,7 +6,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -44,6 +46,13 @@ public class ClassesAdapter extends RecyclerView.Adapter<ClassesAdapter.ViewHold
     public void onBindViewHolder(@NonNull ClassesAdapter.ViewHolder holder, int position) {
         Classes.Classe classe = classes.get(position);
         holder.nombre.setText(classe.getNomClasse());
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                holder.itemView.getContext(),
+                R.array.dificultades,
+                android.R.layout.simple_spinner_item
+        );
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        holder.spinnerDificultad.setAdapter(adapter);
         holder.btnUnirse.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -56,7 +65,6 @@ public class ClassesAdapter extends RecyclerView.Adapter<ClassesAdapter.ViewHold
                 intent.putExtra("idClasse", classe.getIdClasse());
                 intent.putExtra("idProfe", idProfe);
                 context.startActivity(intent);
-
             }
         });
 
@@ -74,11 +82,13 @@ public class ClassesAdapter extends RecyclerView.Adapter<ClassesAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
     TextView nombre;
     Button btnUnirse;
+    Spinner spinnerDificultad;
 
         public ViewHolder(@NonNull View parent) {
             super(parent);
             nombre = parent.findViewById(R.id.tvNombreClasse);
             btnUnirse = parent.findViewById(R.id.btnUnirse);
+            spinnerDificultad = parent.findViewById(R.id.spinnerDificultad);
         }
     }
 

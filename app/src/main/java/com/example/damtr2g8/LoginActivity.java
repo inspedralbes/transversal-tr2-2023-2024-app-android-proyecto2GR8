@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(v -> {
             //loginPrueba(v);
             if(etEmail.getText().toString().isEmpty() || etPass.getText().toString().isEmpty()){
-                Toast.makeText(LoginActivity.this, "Rellena todos los campos", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, getString(R.string.ToastCampos), Toast.LENGTH_SHORT).show();
                 return;
             }else{
                 login();

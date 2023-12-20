@@ -65,7 +65,7 @@ public class SalaActivity extends AppCompatActivity {
                         }
 
                         recyclerView = findViewById(R.id.rvJugadors);
-                        recyclerView.setLayoutManager(new GridLayoutManager(SalaActivity.this,5));
+                        recyclerView.setLayoutManager(new GridLayoutManager(SalaActivity.this,3));
 
                         // Configurar el adaptador con la lista de jugadores
                         jugadorsAdapter = new JugadoresAdapter(sala.getJugadores());

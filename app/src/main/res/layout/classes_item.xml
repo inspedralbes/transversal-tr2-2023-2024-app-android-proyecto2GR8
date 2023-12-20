@@ -11,30 +11,60 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:textAlignment="center"
-        android:gravity="center"
+        android:orientation="horizontal"
         android:background="@drawable/background_rounded"
+        android:gravity="center"
+        android:paddingHorizontal="40px"
         tools:ignore="MissingConstraints">
-
-        <TextView
-            android:id="@+id/tvNombreClasse"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:textAlignment="center"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:layout_marginVertical="10dp"
-            android:text="@string/tvNomClasse"/>
+            android:gravity="center"
+            android:layout_marginEnd="15dp">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnUnirse"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/tvNombreClasse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_marginVertical="10dp"
+                android:text="@string/tvNomClasse"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnUnirse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btnUnirse"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/background_rounded_button"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btnUnirse"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/background_rounded_button"/>
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tvDificultad"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+            <Spinner
+                android:id="@+id/spinnerDificultad"
+                android:layout_width="match_parent"
+                android:layout_height="150px"
+                android:contentDescription="Spinner para elegir la dificultad"
+                android:layout_marginBottom="10dp"
+
+                />
+        </LinearLayout>
 
     </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

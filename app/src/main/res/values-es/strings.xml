@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">DAMTR2G8</string>
+    <string name="app_name">Math Battle</string>
     <string name="tvBienvenida">BIENVENIDO A MATH BATTLE</string>
     <string name="tvEmail">Tu correo electronico: </string>
     <string name="tvHintEmail">correo@ejemplo.com</string>
@@ -10,7 +10,7 @@
     <string name="tvLogin">Iniciar sesión</string>
     <string name="tvNoUsuario">No tienes usuario?</string>
     <string name="btnIrRegistro">REGISTRARSE</string>
-    <string name="tvRegisterActivity">REGISTRo</string>
+    <string name="tvRegisterActivity">REGISTRO</string>
     <string name="btnIrLogin">INICIAR SESSION</string>
     <string name="tvSiUsuario">Ya tienes un usuario?</string>
     <string name="btnCrearClasse">Boton para crear una clase</string>
@@ -28,6 +28,8 @@
     <string name="btnCancelar">CANCEL</string>
     <string name="btnUnirse">UNIRSE</string>
     <string name="ToastClasse">Tienes que ponerle un nombre a la clase</string>
+    <string name="ToastCampos">Tienes que introducir todos los datos</string>
+    <string name="tvDificultad">Selecciona la dificultad</string>
 
 
 

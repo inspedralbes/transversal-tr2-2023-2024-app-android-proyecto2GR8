@@ -70,14 +70,13 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="800px"
         android:background="@drawable/background_rounded"
         android:layout_margin="10dp">
       <androidx.recyclerview.widget.RecyclerView
           android:id="@+id/rvJugadors"
-          android:paddingTop="30dp"
-          android:paddingHorizontal="30dp"
-          android:scrollbars="vertical"
+          android:paddingTop="10dp"
+          android:paddingHorizontal="10dp"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
