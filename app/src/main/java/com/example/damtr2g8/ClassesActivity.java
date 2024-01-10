@@ -27,6 +27,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.damtr2g8.databinding.ActivityClassesBinding;
+import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import org.w3c.dom.Text;
@@ -122,6 +123,9 @@ public boolean onOptionsItemSelected(MenuItem item) {
 
         case R.id.ver_estadisticas:
             Intent intent = new Intent(ClassesActivity.this, StatsActivity.class);
+            Gson gson = new Gson();
+            String classesJson = gson.toJson(classes);
+            intent.putExtra("classes", classesJson.toString());
             startActivity(intent);
             return true;
         default:
