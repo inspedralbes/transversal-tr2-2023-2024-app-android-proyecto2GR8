@@ -29,8 +29,6 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
         byte[] image = imageList.get(position);
         Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
         holder.imageView.setImageBitmap(bitmap);
-        /*Picasso.get().load(image).into(holder.imageView);*/
-        // Configura otros elementos de la vista según la imagen si es necesario
     }
 
     @Override
