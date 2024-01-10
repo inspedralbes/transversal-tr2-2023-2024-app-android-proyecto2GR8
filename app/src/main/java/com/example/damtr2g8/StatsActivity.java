@@ -61,95 +61,60 @@ public class StatsActivity extends AppCompatActivity {
             if (jsonString != null) {
                 try {
                     classesArray = new JSONArray(jsonString);
+                    imageList = new ArrayList<>();
+                    for (int i = 0; i < classesArray.length(); i++) {
+                        try {
+                            JSONObject classeJson = classesArray.getJSONObject(i);
+                            int idClasse = classeJson.getInt("idClasse");
+                            Log.d("TAJ", Integer.toString(idClasse));
+                            obtenerImagenesDeClase(idClasse);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         }
+    }
 
-
-
-//        for (int i = 0; i < classesArray.length(); i++) {
-//            try {
-//                JSONObject classeJson = classesArray.getJSONObject(i);
-//                int idClasse = classeJson.getInt("idClasse");
-//                obtenerImagenesDeClase(idClasse);
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//        }
-
+    private void obtenerImagenesDeClase(int idClasse) {
         retrofit = new Retrofit.Builder()
                 .baseUrl(URL)
                 .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().setLenient().create()))
                 .build();
 
-        try {
-            int idClasse = classesArray.getJSONObject(0).getInt("idClasse");
-            apiService = retrofit.create(JuegoAPI.class);
-            Call<ResponseBody> call = apiService.getImages(idClasse);
-            call.enqueue(new Callback<ResponseBody>() {
-                @Override
-                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                    if(response.isSuccessful()){
-                        try {
-                            byte[] imageBytes = new byte[0];
-                            imageBytes = response.body().bytes();
-                            Log.d("taj", imageBytes.toString());
-                            imageList.add(imageBytes);
-
-                            recyclerView = findViewById(R.id.recyclerStats);
-                            adapter = new ImageAdapter(imageList);
-                            recyclerView.setLayoutManager(new LinearLayoutManager(StatsActivity.this));
-                            recyclerView.setAdapter(adapter);
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                        /*for (int i = 0; i < imageList.size(); i++) {
-                            Log.d("TAJ", imageList.get(i).getUrl());
-                        }*/
-                    }else{
-                        Toast.makeText(StatsActivity.this, "Error al obtener las imagenes", Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-
-                @Override
-                public void onFailure(Call<ResponseBody> call, Throwable t) {
-                    Log.d("TAJ", t.getMessage());
-                }
-            });
-        } catch (JSONException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-/*    private void obtenerImagenesDeClase(int idClasse) {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
         apiService = retrofit.create(JuegoAPI.class);
-
-        Call <ImageResponse> call = apiService.getImages(idClasse);
-        call.enqueue(new Callback<ImageResponse>() {
+        Call<ResponseBody> call = apiService.getImages(idClasse);
+        call.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<ImageResponse> call, Response<ImageResponse> response) {
-                if (response.isSuccessful()) {
-                    ImageResponse image = response.body();
-                    imageList.add(image);
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if(response.isSuccessful()){
+                    try {
+                        byte[] imageBytes = new byte[0];
+                        imageBytes = response.body().bytes();
+                        imageList.add(imageBytes);
 
-                    adapter.notifyDataSetChanged();
+                        recyclerView = findViewById(R.id.recyclerStats);
+                        adapter = new ImageAdapter(imageList);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(StatsActivity.this));
+                        recyclerView.setAdapter(adapter);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }else{
+                    Toast.makeText(StatsActivity.this, "Error al obtener las imagenes", Toast.LENGTH_SHORT).show();
                 }
             }
 
-            @Override
-            public void onFailure(Call<ImageResponse> call, Throwable t) {
 
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.d("TAJ", t.getMessage());
             }
         });
-    }*/
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
