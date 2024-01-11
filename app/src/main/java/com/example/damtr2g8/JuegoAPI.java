@@ -2,6 +2,7 @@ package com.example.damtr2g8;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -19,4 +20,6 @@ public interface JuegoAPI {
     @POST("/crearClasse")
     Call<Void> crearClasse(@Body CrearClasse crearClasse);
 
+    @GET("/getImatgeEstadistiques/dificultatRespostes/{idClasse}")
+    Call<ResponseBody>  getImages(@Path("idClasse") int idClasse);
 }
